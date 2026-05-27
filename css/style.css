@@ -13,6 +13,7 @@
 /* GLOBAL */
 .primaryBackgroundColor {
     background-color: black;
+    /* background-image: url(../images/backgroundStars.avif); */
 }
 
 .primaryColor {
@@ -100,7 +101,7 @@ main {
 }
 
 #HardSkills .container {
-    overflow-x: clip; 
+    overflow-x: clip;
     display: flex; 
     position: absolute; 
     top: 450px;
@@ -121,7 +122,7 @@ main {
     opacity: 1; 
     align-items: center; 
     width: max-content;
-    animation: marquee 30s linear infinite;
+    /* animation: marquee 30s linear infinite; */
 }
 
 #HardSkills .track:hover {
@@ -145,17 +146,115 @@ main {
 /* SOFT SKILLS */
 #KeyStrengths {
     height: 100vh;
-    display: flex;
-    justify-content: center ;
+    margin-top: 50px;
     margin-left: 2%;
     margin-right: 2%;
 }
 
+#KeyStrengths h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#KeyStrengths .cardsContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40vh;
+    gap: 10px;
+}
+
+#KeyStrengths .card {
+    width: 120px;
+    height: 150px;
+    background-color: black;
+    border: 2px solid greenyellow;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+}
+
+#KeyStrengths .card1 {
+    
+}
+
+#KeyStrengths .card2 {
+   
+}
+
+#KeyStrengths .card3 {
+   
+}
+
+#KeyStrengths .card4 {
+  
+}
+
+#KeyStrengths .card5 {
+  
+}
+
+#KeyStrengths .card i{
+    font-size: 50px;
+    margin: 50px;
+}
+
+#KeyStrengths .cardDescription {
+    height: 40vh;
+    margin: 10px;
+    gap: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#KeyStrengths .selectedCard {
+    width: 120px;
+    height: 150px;
+    border: 2px solid greenyellow;
+}
+
+#KeyStrengths p {
+    width: 50%;
+    border: 2px solid greenyellow;
+}
+
 /* CONTACT */
 #Contact {
-    height: 100vh;
-    display: flex;
-    justify-content: center ;
+    height: 30vh;
+    margin-top: 50px;
     margin-left: 2%;
     margin-right: 2%;
+    text-align: center;
+}
+
+#Contact h2 {
+    margin-bottom: 20px;
+}
+
+footer {
+    margin-left: 2%;
+    margin-right: 2%;
+    height: 10vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+footer div {
+    width: 33%;
+}
+
+footer .copyright {
+    text-align: start;
+}
+
+footer .backToTop {
+    text-align: center;
+}
+
+footer .contact {
+    text-align: end;
 }
