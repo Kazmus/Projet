@@ -31,6 +31,7 @@
 body {
     /* margin-left: 2%;
     margin-right: 2%; */
+    overflow-x: hidden;
 }
 
 /* HEADER */
@@ -94,25 +95,25 @@ main {
 }
 
 #HardSkills h2 {
-    position: absolute; 
-    top: 525px;
-    left: 120px;
-    transform: rotate(-3deg);
+    /* position: absolute;  */
+    /* top: 525px; */
+    /* left: 120px; */
+    /* transform: rotate(-3deg); */
 }
 
-#HardSkills .container {
-    overflow-x: clip;
+#HardSkills .marquee {
     display: flex; 
-    position: absolute; 
-    top: 450px;
+    /* position: absolute;  */
+    top: 30%;
     opacity: 1; 
-    transform: rotate(-3deg);
+    /* transform: rotate(-3deg); */
     height: 50px;
 }
 
 #HardSkills .track {
+    
     display: flex; 
-    position: relative; 
+    /* position: relative;  */
     background-color: black;
     /* border: 2px solid yellowgreen; */
     list-style-type: none; 
@@ -122,7 +123,14 @@ main {
     opacity: 1; 
     align-items: center; 
     width: max-content;
+    will-change: transform;
+    margin: 0;
+    padding: 0;
     /* animation: marquee 30s linear infinite; */
+}
+
+#HardSkills .track li { 
+    white-space: nowrap; 
 }
 
 #HardSkills .track:hover {
