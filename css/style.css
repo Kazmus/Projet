@@ -91,7 +91,7 @@ main {
 
 /* HARD SKILLS */
 #HardSkills {
-    height: 10vh;
+    height: 20vh;
 }
 
 #HardSkills h2 {
@@ -99,6 +99,7 @@ main {
     /* top: 525px; */
     /* left: 120px; */
     /* transform: rotate(-3deg); */
+    text-align: center;
 }
 
 #HardSkills .marquee {
@@ -106,7 +107,7 @@ main {
     /* position: absolute;  */
     top: 30%;
     opacity: 1; 
-    /* transform: rotate(-3deg); */
+    transform: rotate(-3deg);
     height: 50px;
 }
 
@@ -126,7 +127,6 @@ main {
     will-change: transform;
     margin: 0;
     padding: 0;
-    /* animation: marquee 30s linear infinite; */
 }
 
 #HardSkills .track li { 
@@ -144,11 +144,6 @@ main {
     height: fit-content; 
     width: fit-content; 
     transform: none;
-}
-
-@keyframes marquee {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
 }
 
 /* SOFT SKILLS */
@@ -182,26 +177,7 @@ main {
     flex-direction: column;
     justify-content: start;
     align-items: center;
-}
-
-#KeyStrengths .card1 {
-    
-}
-
-#KeyStrengths .card2 {
-   
-}
-
-#KeyStrengths .card3 {
-   
-}
-
-#KeyStrengths .card4 {
-  
-}
-
-#KeyStrengths .card5 {
-  
+    position: relative;
 }
 
 #KeyStrengths .card i{
@@ -218,7 +194,7 @@ main {
     align-items: center;
 }
 
-#KeyStrengths .selectedCard {
+#KeyStrengths .cardPlacement {
     width: 120px;
     height: 150px;
     border: 2px solid greenyellow;
