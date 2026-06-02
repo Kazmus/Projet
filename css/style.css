@@ -11,19 +11,28 @@
 }
 
 h1 {
-    font-size: 3rem;
+    font-size: 4rem;
 }
 
 h2 {
-    font-size: 2.5rem;
+    font-size: 3rem;
 }
 
 h3 {
+    font-size: 2.5rem;
+}
+
+h4 {
     font-size: 2rem;
 }
 
 p, li {
     font-size: 1.5rem;
+}
+
+a {
+    text-decoration: none;
+    color: white;
 }
 
 /* GLOBAL */
@@ -72,32 +81,86 @@ header nav ul {
 
 /* MAIN */
 main {
-    margin-top: 10vh;
-    margin-bottom: 10vh;
+    /* margin-top: 10vh;
+    margin-bottom: 10vh; */
 }
 
-#Hero {
-    height: 100vh;
+#About h2 {
+    text-align: center;
+    /* margin-bottom: 10px; */
+}
+
+#AboutContainer {
+    height: 80vh;
     display: flex;
-    position: relative; 
+    justify-content: space-around;
+    align-items: center;
+    /* position: relative;  */
     margin-left: 20px;
     margin-right: 20px;
 }
 
-#About {
+#About #Description {
     width: 40%;
     display: flex;
     flex-direction: column;
 }
 
-#About img {
+#About #Image {
+    width: 40%;
+}
+
+.alive {
+    animation: toBeAlive 2s forwards;
+}
+
+@keyframes toBeAlive {
+  from { filter: invert(0)}
+  to { filter: invert(100%)}
+}
+
+#About #Image .puzzlePiece {
+    display: block;
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    cursor: grab;
+    z-index: 15;
+    /* transform: translateX(200px) translateY(350px); */
+    filter: invert(100%);
+    animation: puzzleRotation 18s linear infinite;
+}
+
+@keyframes puzzleRotation {
+  from { transform: rotate(0deg)}
+  to { transform: rotate(360deg)}
+}
+
+#About #Image .missingPiecePlacement {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    z-index: 10;
+    transform: translateX(400px) translateY(350px);
+    filter: grayscale(100%);
+}
+
+#About #Image img {
     width: 100%;
-    margin-top: 10px;
+    filter: invert(100%);
 }
 
 #Projects {
+    /* width: 60%; */
+    /* margin-left: 1%; */
+    margin: 0 auto;
     width: 60%;
-    margin-left: 1%;
+    /* margin-left: 20px;
+    margin-right: 20px; */
+}
+
+#Projects h2 {
+    text-align: center;
 }
 
 #Projects video {
@@ -192,6 +255,7 @@ main {
     justify-content: start;
     align-items: center;
     position: relative;
+    cursor: grab;
 }
 
 #KeyStrengths .card i{

@@ -1,22 +1,19 @@
 function marquee() {
     const $track = $('.track');
 
-    // Measure the EXACT (fractional) width of the original strip BEFORE cloning.
     const firstOriginal = $track.children().first()[0];
 
-    // Clone the items so a seamless second copy follows the first.
     $track.append($track.children().clone());
 
-    const pxPerSec = 160;
+    const pxPerSec = 80;
     var repeatWidth = measureRepeat();
 
-    // True distance from the first original item to its clone — sub-pixel accurate.
     function measureRepeat() {
         const children = $track.children();
-        const firstCloneIndex = children.length / 2;          // clone starts at the midpoint
+        const firstCloneIndex = children.length / 2;
         const a = children.eq(0)[0].getBoundingClientRect().left;
         const b = children.eq(firstCloneIndex)[0].getBoundingClientRect().left;
-        return b - a;                                         // fractional, not rounded
+        return b - a;
     }
 
     var offset = 0;
@@ -27,8 +24,6 @@ function marquee() {
             const delta = (now - lastTime) / 1000;
             offset += pxPerSec * delta;
 
-            // Subtract the EXACT repeat width. The overshoot carries over,
-            // so there's no rounding snap.
             if (offset >= repeatWidth) offset -= repeatWidth;
 
             $track.css('transform', 'translate3d(' + (-offset) + 'px, 0, 0)');
@@ -38,7 +33,6 @@ function marquee() {
     }
     requestAnimationFrame(step);
 
-    // Remeasure on resize, and after fonts load (Font Awesome changes widths late).
     $(window).on('resize', () => { repeatWidth = measureRepeat(); });
     if (document.fonts && document.fonts.ready) {
         document.fonts.ready.then(() => { repeatWidth = measureRepeat(); });
@@ -94,20 +88,20 @@ function magicCard() {
 }
 
 function moveCard(selectedCard) {
-    var cardOffset = selectedCard.offset();
-    var targetOffset = $(".cardPlacement").offset();
-    var cardDescription = $(".cardDescription");
+    const cardOffset = selectedCard.offset();
+    const targetOffset = $(".cardPlacement").offset();
+    const cardDescription = $(".cardDescription");
 
     animating = true;
+    cardDescription.fadeOut(250);
 
     selectedCard.animate({
         top: (targetOffset.top - cardOffset.top) + "px",
         left: (targetOffset.left - cardOffset.left) + "px"
-    }, 250, function() {
-        $.each(cards, function (index, value) { 
-            if (selectedCard.hasClass(cards[index].className))
-            {
-                cardDescription.html(cards[index].description);
+    }, 500, function () {
+        $.each(cards, function (index, value) {
+            if (selectedCard.hasClass(cards[index].className)) {
+                cardDescription.html(cards[index].description).fadeIn(250);
                 if (selectedCard.hasClass("moved")) {
                     cardDescription.html("");
                 }
@@ -115,5 +109,69 @@ function moveCard(selectedCard) {
                 animating = false;
             }
         });
+    });
+}
+
+const imageContainer = $("#Image");
+const puzzlePiece = $(".puzzlePiece");
+const missingPiecePlacement = $(".missingPiecePlacement");
+
+function dragPuzzle() {
+    const width = puzzlePiece.width();
+    const height = puzzlePiece.height();
+
+    const missingPiecePos = missingPiecePlacement.position();
+    const missingPiecePosX = missingPiecePos.left - width / 2;
+    const missingPiecePosY = missingPiecePos.top - width / 2;
+
+    var currentMousePos = { x: -1, y: -1 };
+    imageContainer.mousemove(function (e) {
+        puzzlePiece.stop(true);
+        currentMousePos.x = e.pageX;
+        currentMousePos.y = e.pageY;
+        const newX = currentMousePos.x - width / 2;
+        const newY = currentMousePos.y - height / 2;
+        puzzlePiece.css({ left: newX, top: newY });
+    }).mouseleave(function () {
+        randomMovement(imageContainer.position());
+    }).click(function (e) {
+        currentMousePos.x = e.pageX;
+        currentMousePos.y = e.pageY;
+        const newX = currentMousePos.x - width;
+        const newY = currentMousePos.y - height;
+        if (newX + 10 >= missingPiecePosX
+            && newX - 10 <= missingPiecePosX
+            && newY + 10 >= missingPiecePosY
+            && newY - 10 <= missingPiecePosY) {
+            // imageContainer.css({ "filter": "invert(100)" });
+            imageContainer.addClass("alive");
+            puzzlePiece.hide();
+            missingPiecePlacement.hide();
+        }
+    });
+}
+
+function randomMovementPuzzle() {
+    const containerOffset = imageContainer.position();
+
+    randomMovement(containerOffset);
+}
+
+function randomMovement(containerOffset) {
+    const x = containerOffset.left + Math.random() * (imageContainer.width() - puzzlePiece.width());
+    const y = containerOffset.top + Math.random() * (imageContainer.height() - puzzlePiece.height());
+
+    const currentX = parseFloat(puzzlePiece.css("left"));
+    const currentY = parseFloat(puzzlePiece.css("top"));
+
+    const deltaX = x - currentX;
+    const deltaY = y - currentY;
+    const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+
+    const speed = 0.05;
+    const duration = distance / speed;
+
+    puzzlePiece.animate({ left: x + "px", top: y + "px" }, duration, function () {
+        randomMovement(containerOffset);
     });
 }

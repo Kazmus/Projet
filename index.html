@@ -12,29 +12,34 @@
     <script src="https://kit.fontawesome.com/4f2db7e18d.js" crossorigin="anonymous"></script>
 </head>
 <body class="primaryBackgroundColor primaryFont">
-    <header>
+    <header id="Header">
         <nav>
             <div class="logo">
-                <h1 class="secondaryColor title">MG Dev</h1>
+                <h1 class="secondaryColor title glitch glitch--noise ">MG Dev</h1>
             </div>
             <ul class="primaryColor">
-                <li>About me</li>
-                <li>Hard skills</li>
-                <li>Key strengths</li>
-                <li>Contact</li>
+                <li><a href="#About">About me</a></li>
+                <li><a href="#HardSkills">Hard skills</a></li>
+                <li><a href="#Projects">Projects</a></li>
+                <li><a href="#KeyStrengths">Key strengths</a></li>
+                <li><a href="#Footer">Contact</a></li>
             </ul>
         </nav>
     </header>
     <main>
-        <section id="Hero">
-            <div id="About">
-                <h2 class="secondaryColor">I am Maurizio Girlando</h2>
-                <h3 class="primaryColor">A Full-stack Web Developper</h3>
-                <p class="tertiaryColor">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis ipsa, impedit perspiciatis numquam recusandae praesentium ut, et omnis animi nostrum laboriosam voluptatibus at totam eaque, nisi excepturi eos ex facere.</p>
-                <img src="https://plus.unsplash.com/premium_photo-1689568126014-06fea9d5d341?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8cHJvZmlsfGVufDB8fDB8fHww" alt="">
-            </div>
-            <div id="Projects">
-                <video src="https://cdn.dribbble.com/userupload/47608134/file/1f603bdcc59e84dcf7d2dc95380b5ca8.mp4"></video>
+        <section id="About">
+            <h2 class="secondaryColor">About Me</h2>
+            <div id="AboutContainer">
+                <div id="Description">
+                    <h3 class="secondaryColor">I am Maurizio Girlando</h3>
+                    <h4 class="primaryColor">A Full-stack Web Developper</h4>
+                    <p class="tertiaryColor">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis ipsa, impedit perspiciatis numquam recusandae praesentium ut, et omnis animi nostrum laboriosam voluptatibus at totam eaque, nisi excepturi eos ex facere.</p>
+                </div>
+                <div id="Image">
+                    <div class="puzzlePiece"><img src="images/free-heart-3d-icon-png-download-12283313.webp" alt=""></div>
+                    <div class="missingPiecePlacement"><img src="images/free-heart-3d-icon-png-download-12283313.webp" alt=""></div>
+                    <img src="https://plus.unsplash.com/premium_photo-1689568126014-06fea9d5d341?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8cHJvZmlsfGVufDB8fDB8fHww" alt="">
+                </div>
             </div>
         </section>
         <section id="HardSkills">
@@ -75,11 +80,15 @@
                 
             </div>
         </section>
+        <section id="Projects">
+            <h2 class="secondaryColor">Projects</h2>
+            <video src="https://cdn.dribbble.com/userupload/47608134/file/1f603bdcc59e84dcf7d2dc95380b5ca8.mp4"></video>
+        </section>
         <section id="KeyStrengths">
             <h2 class="secondaryColor">Key Strengths</h2>
             <div class="cardInfo">
                 <div class="cardPlacement"></div>
-                <p class="primaryColor cardDescription">Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus ipsa velit est id nostrum aut illo corporis libero accusantium veniam?</p>
+                <p class="primaryColor cardDescription"></p>
             </div>
             <div class="cardsContainer">
                 <div class="card card1 primaryColor">
@@ -105,13 +114,13 @@
             </div>
         </section>
     </main>
-    <footer>
+    <footer id="Footer">
         <div class="copyright">
             <p class="primaryColor">Designed by Maurizio Girlando</p>
             <p class="primaryColor">2026</p>
         </div>
         <div class="backToTop">
-            <p class="secondaryColor">↑ Back to top ↑</p>
+            <p><a class="secondaryColor" href="#Header">↑ Back to top ↑</a></p>
         </div>
         <div class="contact">
             <p class="primaryColor">Linkedin</p>
