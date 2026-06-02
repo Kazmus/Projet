@@ -175,3 +175,19 @@ function randomMovement(containerOffset) {
         randomMovement(containerOffset);
     });
 }
+
+function atomDrawer() {
+    const $atom = $('#Projects .atom');
+    const observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+                $(entry.target).addClass('in-view');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.75 });
+
+    $atom.each(function () {
+        observer.observe(this);
+    });
+}

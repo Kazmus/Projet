@@ -53,10 +53,9 @@ a {
     color: grey;
 }
 
-body {
-    /* margin-left: 2%;
-    margin-right: 2%; */
+html, body {
     overflow-x: hidden;
+    max-width: 100%;
 }
 
 /* HEADER */
@@ -128,10 +127,10 @@ main {
     z-index: 15;
     /* transform: translateX(200px) translateY(350px); */
     filter: invert(100%);
-    animation: puzzleRotation 18s linear infinite;
+    animation: spin 18s linear infinite;
 }
 
-@keyframes puzzleRotation {
+@keyframes spin {
   from { transform: rotate(0deg)}
   to { transform: rotate(360deg)}
 }
@@ -154,18 +153,148 @@ main {
     /* width: 60%; */
     /* margin-left: 1%; */
     margin: 0 auto;
-    width: 60%;
+    width: 40%;
     /* margin-left: 20px;
     margin-right: 20px; */
+    height: 80vh;
 }
 
 #Projects h2 {
     text-align: center;
+    margin-bottom: 20px;
 }
 
-#Projects video {
-    width: 100%;
-    /* border: 1px solid white; */
+#Projects .atom {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 100%;
+}
+
+#Projects .orbit {
+    position: absolute;
+    overflow: visible;
+    width: 200px;
+    height: 640px; 
+}
+
+#Projects .rot0  { 
+    animation: spin 72s linear infinite; 
+}
+
+#Projects .rot60  { 
+    animation: spin 72s linear infinite; 
+    animation-delay: -12s;
+}
+
+#Projects .rot120 { 
+    animation: spin 72s linear infinite; 
+    animation-delay: -24s;
+}
+
+#Projects .nucleus {
+    display: block;
+    width: 50px;
+    height: 50px;
+    background-color: yellowgreen;
+    border-radius: 50%;
+    position: absolute;
+    z-index: 2;
+}
+
+#Projects .firstEllipse,
+#Projects .secondEllipse,
+#Projects .thirdEllipse {
+    fill: none;
+    stroke: yellowgreen;
+    stroke-width: 2;
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
+}
+
+#Projects .atom.in-view .firstEllipse  { animation: draw 1.2s ease 0s   forwards; }
+#Projects .atom.in-view .secondEllipse { animation: draw 1.2s ease 1.2s forwards; }
+#Projects .atom.in-view .thirdEllipse  { animation: draw 1.2s ease 2.4s forwards; }
+
+@keyframes draw {
+    to { stroke-dashoffset: 0; }
+}
+
+.orbit-arm { 
+    position: absolute; 
+    left: 50%; 
+    top: 50%; 
+    width: 0; 
+    height: 0; 
+    z-index: 4; 
+}
+
+.arm0   { animation: arm 72s linear infinite; }
+.arm60  { animation: arm 72s linear -12s infinite; }
+.arm120 { animation: arm 72s linear -24s infinite; }
+
+@keyframes arm {
+    from { transform: rotate(0); } 
+    to { transform: rotate(360deg); } 
+}
+
+.arm-end { 
+    position: absolute; 
+    left: 0; 
+    top: 0; 
+    width: 0; 
+    height: 0; 
+}
+
+.arm-end.up   { transform: translateY(-250px); }
+.arm-end.down { transform: translateY(250px); }
+
+.upright { 
+    position: absolute; 
+    left: 0; 
+    top: 0; 
+    width: 0; 
+    height: 0; 
+}
+
+.spinrev0   { animation: spinrev 72s linear infinite; }
+.spinrev60  { animation: spinrev 72s linear -12s infinite; }
+.spinrev120 { animation: spinrev 72s linear -24s infinite; }
+
+@keyframes spinrev { 
+    from { transform: rotate(0); } 
+    to { transform: rotate(-360deg); } 
+}
+
+.label-pop {
+    position: absolute; 
+    width: 100px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: grey;
+    border: 2px solid yellowgreen;
+    left: 0; 
+    top: 0; 
+    white-space: nowrap;
+    opacity: 0; 
+    transform: translate(-50%, -50%) scale(0);
+}
+.atom.in-view .t1 { animation: pop .45s cubic-bezier(.34,1.56,.64,1) 1.2s forwards; }
+.atom.in-view .t2 { animation: pop .45s cubic-bezier(.34,1.56,.64,1) 2.4s forwards; }
+.atom.in-view .t3 { animation: pop .45s cubic-bezier(.34,1.56,.64,1) 3.6s forwards; }
+
+@keyframes pop {
+    from { opacity: 0; transform: translate(-50%, -50%) scale(0); }
+    to   { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+
+#Projects .atom:hover .orbit,
+#Projects .atom:hover .orbit-arm,
+#Projects .atom:hover .upright { 
+    animation-play-state: paused; 
 }
 
 /* HARD SKILLS */
@@ -184,6 +313,7 @@ main {
 
 #HardSkills .marquee {
     display: flex; 
+    overflow: hidden;
     /* position: absolute;  */
     top: 30%;
     opacity: 1; 
@@ -191,7 +321,6 @@ main {
 }
 
 #HardSkills .track {
-    
     display: flex; 
     /* position: relative;  */
     background-color: black;
