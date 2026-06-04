@@ -1,4 +1,5 @@
 $(function () {
+  hamburgerNav();
   randomMovementPuzzle();
   dragPuzzle();
   atomDrawer();

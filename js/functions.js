@@ -191,3 +191,18 @@ function atomDrawer() {
         observer.observe(this);
     });
 }
+
+function hamburgerNav() {
+    const $nav = $("header nav");
+    const $hamburger = $(".hamburger");
+
+    $hamburger.on("click", function () {
+        const isOpen = $nav.toggleClass("nav-open").hasClass("nav-open");
+        $hamburger.attr("aria-expanded", isOpen);
+    });
+
+    $nav.find("ul a").on("click", function () {
+        $nav.removeClass("nav-open");
+        $hamburger.attr("aria-expanded", "false");
+    });
+}

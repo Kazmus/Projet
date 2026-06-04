@@ -1,6 +1,12 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+/* keep media from overflowing its container on small screens */
+img {
+    max-width: 100%;
 }
 
 /* FONTS */
@@ -33,6 +39,28 @@ p, li {
 a {
     text-decoration: none;
     color: white;
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    h3 {
+        font-size: 1.5rem;
+    }
+
+    h4 {
+        font-size: 1rem;
+    }
+
+    p, li {
+        font-size: 1rem;
+    }
 }
 
 /* GLOBAL */
@@ -78,12 +106,31 @@ header nav ul {
     list-style: none;
 }
 
-/* MAIN */
-main {
-    /* margin-top: 10vh;
-    margin-bottom: 10vh; */
+/* HAMBURGER */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 32px;
+    height: 24px;
+    padding: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 30;
+}
+ 
+.hamburger span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: white;
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
+
+/* MAIN */
 #About h2 {
     text-align: center;
     /* margin-bottom: 10px; */
@@ -381,7 +428,7 @@ main {
     text-align: center;
     display: flex;
     flex-direction: column;
-    justify-content: start;
+    justify-content: center;
     align-items: center;
     position: relative;
     cursor: grab;
@@ -389,7 +436,6 @@ main {
 
 #KeyStrengths .card i{
     font-size: 50px;
-    margin: 50px;
 }
 
 #KeyStrengths .cardInfo {
@@ -449,3 +495,158 @@ footer .backToTop {
 footer .contact {
     text-align: end;
 }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    header {
+        height: auto;
+        padding: 15px 0;
+    }
+ 
+    header nav {
+        position: relative;
+    }
+ 
+    .hamburger {
+        display: flex;
+    }
+ 
+    header nav ul {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        left: 0;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        background-color: black;
+        padding: 0;
+        border-top: 0 solid greenyellow;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        pointer-events: none;
+        transition: max-height 0.3s ease, opacity 0.3s ease, padding 0.3s ease;
+        z-index: 20;
+    }
+ 
+    header nav.nav-open ul {
+        max-height: 320px;
+        padding: 20px 0;
+        border-top-width: 2px;
+        opacity: 1;
+        pointer-events: auto;
+    }
+ 
+    header nav.nav-open .hamburger span:nth-child(1) {
+        transform: translateY(10px) rotate(45deg);
+    }
+ 
+    header nav.nav-open .hamburger span:nth-child(2) {
+        opacity: 0;
+    }
+ 
+    header nav.nav-open .hamburger span:nth-child(3) {
+        transform: translateY(-10px) rotate(-45deg);
+    }
+
+    #AboutContainer {
+        flex-direction: column;
+        height: auto;
+        gap: 40px;
+        padding: 40px 0;
+    }
+
+    #About #Description {
+        text-align: center;
+    }
+
+    #About #Description,
+    #About #Image {
+        width: 90%;
+    }
+
+    #About #Image .puzzlePiece,
+    #About #Image .missingPiecePlacement {
+        display: none;
+    }
+
+    #About #Image {
+        filter: invert(100%);
+    }
+
+    #HardSkills {
+        height: auto;
+        padding: 20px 0;
+    }
+
+    #Projects {
+        width: 90%;
+        height: 60vh;
+    }
+
+    #KeyStrengths {
+        /* width: 90%; */
+        height: auto;
+        margin-top: 30px;
+        padding-bottom: 40px;
+    }
+
+    #KeyStrengths .cardsContainer {
+        flex-wrap: wrap;
+        height: 20vh;
+        gap: 20px;
+        padding: 0 20px;
+    }
+
+    #KeyStrengths .cardInfo {
+        height: 30vh;
+    }
+
+    #KeyStrengths .card {
+        width: 75px;
+        height: 100px;
+    }
+
+    #KeyStrengths .cardPlacement {
+        width: 75px;
+        height: 100px;
+    }
+
+    #KeyStrengths p {
+        width: 90%;
+    }
+
+    #Contact {
+        height: auto;
+        padding: 30px 0;
+    }
+
+    footer {
+        flex-direction: column;
+        height: auto;
+        gap: 12px;
+        padding: 20px 0;
+    }
+
+    footer div,
+    footer .copyright,
+    footer .backToTop,
+    footer .contact {
+        width: 100%;
+        text-align: center;
+    }
+
+    #Projects .atom {
+        transform: scale(0.9);
+        transform-origin: center;
+    }
+}
+
+@media (max-width: 576px) {
+    #Projects .atom {
+        transform: scale(0.6);
+        transform-origin: center;
+    }
+}
+
