@@ -412,6 +412,13 @@ header nav ul {
     margin-bottom: 20px;
 }
 
+#KeyStrengths h3 {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
 #KeyStrengths .cardsContainer {
     display: flex;
     justify-content: center;
@@ -420,18 +427,42 @@ header nav ul {
     gap: 30px;
 }
 
+#KeyStrengths .cardSocle {
+    padding: 20px;
+    width: 200px;
+    height: 260px;
+    background-color: black;
+    border: 2px solid greenyellow;
+    border-radius: 10px;
+}
+
 #KeyStrengths .card {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    padding: 20px;
     width: 200px;
     height: 260px;
     background-color: black;
     border: 2px solid greenyellow;
     text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     position: relative;
     cursor: grab;
+    border-radius: 10px;
+}
+
+#KeyStrengths .card.notMoved {
+    animation: levitate 4s ease-in-out infinite;
+}
+
+@keyframes levitate {
+  0%   { transform: translateY(0px)   rotateX(2deg)  rotateY(-2deg); }
+  25%  { transform: translateY(-14px) rotateX(-1deg) rotateY(3deg); }
+  50%  { transform: translateY(-20px) rotateX(2deg)  rotateY(-1deg); }
+  75%  { transform: translateY(-10px) rotateX(-2deg) rotateY(2deg); }
+  100% { transform: translateY(0px)   rotateX(2deg)  rotateY(-2deg); }
 }
 
 #KeyStrengths .card i{

@@ -56,11 +56,11 @@ card3.className = "card3";
 card4.className = "card4";
 card5.className = "card5";
 
-card1.description = "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minima ratione labore at porro, impedit soluta voluptate laborum nobis quasi unde doloribus fugiat. Rem veniam repellat sapiente illum provident! Sunt, exercitationem!";
-card2.description = "Quia, praesentium! Laborum architecto qui rem quod. Porro quaerat est fugiat optio tempore quod voluptates laborum sint? Dolorum natus voluptate aut temporibus mollitia saepe? Cum velit quia odio magnam ipsam.";
-card3.description = "Architecto, mollitia nobis saepe blanditiis quia pariatur laudantium assumenda tempora est ex hic amet fugiat optio iusto deleniti ea vero beatae consectetur unde ipsa non deserunt. Nisi illo amet quam.";
-card4.description = "Ut impedit voluptatum ipsa aliquam repellendus explicabo accusamus eligendi deleniti vero dolores modi repellat, est porro eaque nam reiciendis, qui, necessitatibus magni culpa quod ratione assumenda natus recusandae aperiam. Dicta.";
-card5.description = "Eligendi repellendus obcaecati nostrum magnam ullam natus voluptatum enim impedit ipsa voluptate magni modi veritatis nihil, eius quis quisquam? Culpa voluptates cumque error deserunt ut molestiae quae autem asperiores sequi.";
+card1.description = "I don't wait for direction to explore. Whether it's a new framework or an unfamiliar domain, I dig in, ask the right questions, and push until I understand it fully.";
+card2.description = "I approach every challenge as a puzzle. I look for the elegant solution — one that's not just functional, but thoughtful, clean, and built to last.";
+card3.description = "I've built most of my skill set outside the classroom — through projects, experimentation, and a lot of deliberate practice. Give me a problem and I'll figure it out.";
+card4.description = "Tech stacks change, project scopes shift, deadlines move. I adjust without losing momentum — staying focused on the outcome regardless of what changes around me.";
+card5.description = "I say what I mean and deliver what I promise. No overclaiming, no excuses — just clear communication and consistent follow-through.";
 
 const cards = new Array(card1, card2, card3, card4, card5);
 
@@ -106,6 +106,7 @@ function moveCard(selectedCard) {
                     cardDescription.html("");
                 }
                 selectedCard.toggleClass("moved");
+                selectedCard.toggleClass("notMoved");
                 animating = false;
             }
         });
@@ -179,7 +180,7 @@ function randomMovement(containerOffset) {
 function atomDrawer() {
     const $atom = $('#Projects .atom');
     const observer = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
+        entries.forEach(function (entry) {
             if (entry.isIntersecting) {
                 $(entry.target).addClass('in-view');
                 observer.unobserve(entry.target);
