@@ -56,6 +56,12 @@ card3.className = "card3";
 card4.className = "card4";
 card5.className = "card5";
 
+card1.originPosition = "";
+card2.originPosition = "";
+card3.originPosition = "";
+card4.originPosition = "";
+card5.originPosition = "";
+
 card1.description = "I don't wait for direction to explore. Whether it's a new framework or an unfamiliar domain, I dig in, ask the right questions, and push until I understand it fully.";
 card2.description = "I approach every challenge as a puzzle. I look for the elegant solution — one that's not just functional, but thoughtful, clean, and built to last.";
 card3.description = "I've built most of my skill set outside the classroom — through projects, experimentation, and a lot of deliberate practice. Give me a problem and I'll figure it out.";
@@ -68,6 +74,10 @@ var animating = false;
 
 function magicCard() {
     var prevCard = null;
+
+    $.each(cards, function (index, value) {
+        value.originPosition = $("." + value.className).parent().offset();
+    });
 
     $(".card").on("click", function () {
         var selectedCard = $(this);
@@ -88,9 +98,17 @@ function magicCard() {
 }
 
 function moveCard(selectedCard) {
-    const cardOffset = selectedCard.offset();
+    var cardOffset = selectedCard.offset();
     const targetOffset = $(".cardPlacement").offset();
     const cardDescription = $(".cardDescription");
+
+    $.each(cards, function (index, value) {
+        if (selectedCard.hasClass(value.className)) {
+            if (selectedCard.hasClass("notMoved")) {
+                cardOffset = value.originPosition;
+            }
+        }
+    });
 
     animating = true;
     cardDescription.fadeOut(250);
@@ -100,8 +118,8 @@ function moveCard(selectedCard) {
         left: (targetOffset.left - cardOffset.left) + "px"
     }, 500, function () {
         $.each(cards, function (index, value) {
-            if (selectedCard.hasClass(cards[index].className)) {
-                cardDescription.html(cards[index].description).fadeIn(250);
+            if (selectedCard.hasClass(value.className)) {
+                cardDescription.html(value.description).fadeIn(250);
                 if (selectedCard.hasClass("moved")) {
                     cardDescription.html("");
                 }
