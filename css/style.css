@@ -427,6 +427,8 @@ header nav ul {
     align-items: center;
     height: 50vh;
     gap: 30px;
+    perspective: 1300px; 
+    perspective-origin: 50% 30%;
 }
 
 #KeyStrengths .cardSocle {
@@ -454,20 +456,23 @@ header nav ul {
     cursor: grab;
     border-radius: 10px;
     position: absolute;
-    top: -10px;
-    left: -10px;
 }
 
 #KeyStrengths .card.notMoved {
-    animation: levitate 4s ease-in-out infinite;
+    transform-style: preserve-3d;
+    animation: bob 4s ease-in-out infinite,
+             drift 7s ease-in-out infinite;
 }
 
-@keyframes levitate {
-  0%   { transform: rotateX(8deg)  rotateY(-8deg); }
-  25%  { transform: rotateX(-4deg) rotateY(7deg); }
-  50%  { transform: rotateX(4deg)  rotateY(-2deg); }
-  75%  { transform: rotateX(-4deg) rotateY(5deg); }
-  100% { transform: rotateX(8deg)  rotateY(-8deg); }
+@keyframes bob {               
+  0%, 100% { translate: 0 0;     scale: 1;     }
+  50%      { translate: 0 -26px; scale: 1.035; }   
+}
+
+@keyframes drift {              
+  0%, 100% { rotate: 1  1 0 5deg; }
+  33%      { rotate: -1 1 0 6deg; }
+  66%      { rotate: 1 -1 0 5deg; }
 }
 
 #KeyStrengths .card i{

@@ -146,22 +146,32 @@ function dragPuzzle() {
     var currentMousePos = { x: -1, y: -1 };
     imageContainer.mousemove(function (e) {
         puzzlePiece.stop(true);
-        currentMousePos.x = e.pageX;
-        currentMousePos.y = e.pageY;
-        const newX = currentMousePos.x - width / 2;
-        const newY = currentMousePos.y - height / 2;
+        const off = imageContainer.offset();       
+        const cw  = imageContainer.outerWidth();
+        const ch  = imageContainer.outerHeight();
+        const w   = puzzlePiece.outerWidth();
+        const h   = puzzlePiece.outerHeight();
+
+        let newX = e.pageX - w / 2;
+        let newY = e.pageY - h / 2;
+
+        // keep the whole piece inside the container
+        newX = Math.max(off.left, Math.min(newX, off.left + cw - w));
+        newY = Math.max(off.top,  Math.min(newY, off.top  + ch - h));
+
         puzzlePiece.css({ left: newX, top: newY });
     }).mouseleave(function () {
         randomMovement(imageContainer.position());
     }).click(function (e) {
         currentMousePos.x = e.pageX;
         currentMousePos.y = e.pageY;
+        console.log(currentMousePos, missingPiecePosX, missingPiecePosY);
         const newX = currentMousePos.x - width;
         const newY = currentMousePos.y - height;
-        if (newX + 10 >= missingPiecePosX
-            && newX - 10 <= missingPiecePosX
-            && newY + 10 >= missingPiecePosY
-            && newY - 10 <= missingPiecePosY) {
+        if (newX + 20 >= missingPiecePosX
+            && newX - 20 <= missingPiecePosX
+            && newY + 20 >= missingPiecePosY
+            && newY - 20 <= missingPiecePosY) {
             // imageContainer.css({ "filter": "invert(100)" });
             imageContainer.addClass("alive");
             puzzlePiece.hide();
