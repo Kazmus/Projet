@@ -146,20 +146,23 @@ function dragPuzzle() {
     var currentMousePos = { x: -1, y: -1 };
     imageContainer.mousemove(function (e) {
         puzzlePiece.stop(true);
-        const off = imageContainer.offset();       
-        const cw  = imageContainer.outerWidth();
-        const ch  = imageContainer.outerHeight();
-        const w   = puzzlePiece.outerWidth();
-        const h   = puzzlePiece.outerHeight();
+        const off = imageContainer.offset();
+        const cw = imageContainer.outerWidth();
+        const ch = imageContainer.outerHeight();
+        const w = puzzlePiece.outerWidth();
+        const h = puzzlePiece.outerHeight();
 
-        let newX = e.pageX - w / 2;
-        let newY = e.pageY - h / 2;
+        var newX = e.pageX - w / 2;
+        var newY = e.pageY - h / 2;
 
         // keep the whole piece inside the container
         newX = Math.max(off.left, Math.min(newX, off.left + cw - w));
-        newY = Math.max(off.top,  Math.min(newY, off.top  + ch - h));
+        newY = Math.max(off.top, Math.min(newY, off.top + ch - h));
 
-        puzzlePiece.css({ left: newX, top: newY });
+        puzzlePiece.css({
+            left: newX,
+            top: newY
+        });
     }).mouseleave(function () {
         randomMovement(imageContainer.position());
     }).click(function (e) {
@@ -218,6 +221,28 @@ function atomDrawer() {
 
     $atom.each(function () {
         observer.observe(this);
+    });
+}
+
+function atomProjectCases() {
+    const currentClickableCase = $(".label-pop");
+
+    currentClickableCase.click(function () {
+        // over
+        $(this).children(".label-hidden").show();
+        $(this).children(".label-hidden").animate({
+            width: "100%",
+        }, 500);
+    }).hover(function () {
+        // nothing            
+    }, function () {
+        // out
+        const hideLabels = $(this).children(".label-hidden");
+        hideLabels.animate({
+            width: "0",
+        }, 500, function () {
+            hideLabels.hide();
+        });
     });
 }
 

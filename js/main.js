@@ -2,7 +2,8 @@ $(function () {
   hamburgerNav();
   randomMovementPuzzle();
   dragPuzzle();
-  atomDrawer();
   marquee();
+  atomDrawer();
+  atomProjectCases();
   magicCard();
 });

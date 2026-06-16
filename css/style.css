@@ -1,3 +1,7 @@
+html {
+  scroll-behavior: smooth;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -39,6 +43,10 @@ p, li {
 a {
     text-decoration: none;
     color: white;
+}
+
+.clickable {
+    cursor: pointer;
 }
 
 @media (max-width: 768px) {
@@ -268,7 +276,7 @@ header nav ul {
     to { stroke-dashoffset: 0; }
 }
 
-.orbit-arm { 
+#Projects .orbit-arm { 
     position: absolute; 
     left: 50%; 
     top: 50%; 
@@ -277,16 +285,16 @@ header nav ul {
     z-index: 4; 
 }
 
-.arm0   { animation: arm 72s linear infinite; }
-.arm60  { animation: arm 72s linear -12s infinite; }
-.arm120 { animation: arm 72s linear -24s infinite; }
+#Projects .arm0   { animation: arm 72s linear infinite; }
+#Projects .arm60  { animation: arm 72s linear -12s infinite; }
+#Projects .arm120 { animation: arm 72s linear -24s infinite; }
 
 @keyframes arm {
     from { transform: rotate(0); } 
     to { transform: rotate(360deg); } 
 }
 
-.arm-end { 
+#Projects .arm-end { 
     position: absolute; 
     left: 0; 
     top: 0; 
@@ -294,10 +302,10 @@ header nav ul {
     height: 0; 
 }
 
-.arm-end.up   { transform: translateY(-250px); }
-.arm-end.down { transform: translateY(250px); }
+#Projects .arm-end.up   { transform: translateY(-250px); }
+#Projects .arm-end.down { transform: translateY(250px); }
 
-.upright { 
+#Projects .upright { 
     position: absolute; 
     left: 0; 
     top: 0; 
@@ -305,23 +313,25 @@ header nav ul {
     height: 0; 
 }
 
-.spinrev0   { animation: spinrev 72s linear infinite; }
-.spinrev60  { animation: spinrev 72s linear -12s infinite; }
-.spinrev120 { animation: spinrev 72s linear -24s infinite; }
+#Projects .spinrev0   { animation: spinrev 72s linear infinite; }
+#Projects .spinrev60  { animation: spinrev 72s linear -12s infinite; }
+#Projects .spinrev120 { animation: spinrev 72s linear -24s infinite; }
 
 @keyframes spinrev { 
     from { transform: rotate(0); } 
     to { transform: rotate(-360deg); } 
 }
 
-.label-pop {
-    position: absolute; 
-    width: 100px;
-    height: 25px;
+#Projects .label-pop {
+    /* position: absolute;  */
+    width: 150px;
+    font-size: 1.2rem;
+    height: auto;
     display: flex;
     justify-content: center;
-    align-items: center;
-    background-color: grey;
+    align-items: start;
+    flex-direction: column;
+    /* background-color: grey; */
     border: 2px solid yellowgreen;
     left: 0; 
     top: 0; 
@@ -329,9 +339,9 @@ header nav ul {
     opacity: 0; 
     transform: translate(-50%, -50%) scale(0);
 }
-.atom.in-view .t1 { animation: pop .45s cubic-bezier(.34,1.56,.64,1) 1.2s forwards; }
-.atom.in-view .t2 { animation: pop .45s cubic-bezier(.34,1.56,.64,1) 2.4s forwards; }
-.atom.in-view .t3 { animation: pop .45s cubic-bezier(.34,1.56,.64,1) 3.6s forwards; }
+#Projects .atom.in-view .t1 { animation: pop .45s cubic-bezier(.34,1.56,.64,1) 1.2s forwards; }
+#Projects .atom.in-view .t2 { animation: pop .45s cubic-bezier(.34,1.56,.64,1) 2.4s forwards; }
+#Projects .atom.in-view .t3 { animation: pop .45s cubic-bezier(.34,1.56,.64,1) 3.6s forwards; }
 
 @keyframes pop {
     from { opacity: 0; transform: translate(-50%, -50%) scale(0); }
@@ -342,6 +352,33 @@ header nav ul {
 #Projects .atom:hover .orbit-arm,
 #Projects .atom:hover .upright { 
     animation-play-state: paused; 
+}
+
+#Projects .label-hidden {
+    /* position: absolute;  */
+    width: 0;
+    height: 25px;
+    text-align: center;
+    background-color: grey;
+    border: 2px solid yellowgreen;
+    /* left: 0; 
+    top: 0;  */
+    white-space: nowrap;
+    /* transform: translate(-50%, -50%) scale(0); */
+    display: none;
+}
+
+#Projects .label-visible {
+    /* position: absolute;  */
+    width: 100%;
+    height: 25px;
+    text-align: center;
+    background-color: black;
+    border: 2px solid yellowgreen;
+    /* left: 0; 
+    top: 0;  */
+    white-space: nowrap;
+    /* transform: translate(-50%, -50%) scale(0); */
 }
 
 /* HARD SKILLS */
@@ -709,4 +746,3 @@ footer .contact {
         transform-origin: center;
     }
 }
-
