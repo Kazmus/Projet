@@ -63,10 +63,10 @@ card4.originPosition = "";
 card5.originPosition = "";
 
 card1.description = "I don't wait for direction to explore. Whether it's a new framework or an unfamiliar domain, I dig in, ask the right questions, and push until I understand it fully.";
-card2.description = "I approach every challenge as a puzzle. I look for the elegant solution — one that's not just functional, but thoughtful, clean, and built to last.";
-card3.description = "I've built most of my skill set outside the classroom — through projects, experimentation, and a lot of deliberate practice. Give me a problem and I'll figure it out.";
-card4.description = "Tech stacks change, project scopes shift, deadlines move. I adjust without losing momentum — staying focused on the outcome regardless of what changes around me.";
-card5.description = "I say what I mean and deliver what I promise. No overclaiming, no excuses — just clear communication and consistent follow-through.";
+card2.description = "I approach every challenge as a puzzle. I look for the elegant solution - one that's not just functional, but thoughtful, clean, and built to last.";
+card3.description = "I've built most of my skill set outside the classroom - through projects, experimentation, and a lot of deliberate practice. Give me a problem and I'll figure it out.";
+card4.description = "Tech stacks change, project scopes shift, deadlines move. I adjust without losing momentum - staying focused on the outcome regardless of what changes around me.";
+card5.description = "I say what I mean and deliver what I promise. No overclaiming, no excuses - just clear communication and consistent follow-through.";
 
 const cards = new Array(card1, card2, card3, card4, card5);
 
@@ -98,25 +98,30 @@ function magicCard() {
 }
 
 function moveCard(selectedCard) {
-    var cardOffset = selectedCard.offset();
     const targetOffset = $(".cardPlacement").offset();
     const cardDescription = $(".cardDescription");
-
-    $.each(cards, function (index, value) {
-        if (selectedCard.hasClass(value.className)) {
-            if (selectedCard.hasClass("notMoved")) {
-                cardOffset = value.originPosition;
-            }
-        }
-    });
-
     animating = true;
     cardDescription.fadeOut(250);
 
-    selectedCard.animate({
-        top: (targetOffset.top - cardOffset.top) + "px",
-        left: (targetOffset.left - cardOffset.left) + "px"
-    }, 500, function () {
+    var animateProps;
+
+    if (selectedCard.hasClass("moved")) {
+        animateProps = { top: 0, left: 0 };
+    } else {
+        var cardOffset = selectedCard.offset();
+        $.each(cards, function (index, value) {
+            if (selectedCard.hasClass(value.className) &&
+                selectedCard.hasClass("notMoved")) {
+                cardOffset = value.originPosition;
+            }
+        });
+        animateProps = {
+            top: (targetOffset.top - cardOffset.top) + "px",
+            left: (targetOffset.left - cardOffset.left) + "px"
+        };
+    }
+
+    selectedCard.animate(animateProps, 500, function () {
         $.each(cards, function (index, value) {
             if (selectedCard.hasClass(value.className)) {
                 cardDescription.html(value.description).fadeIn(250);
@@ -134,6 +139,7 @@ function moveCard(selectedCard) {
 const imageContainer = $("#Image");
 const puzzlePiece = $(".puzzlePiece");
 const missingPiecePlacement = $(".missingPiecePlacement");
+const imagePositive = "/images/positif.jpg";
 
 function dragPuzzle() {
     const width = puzzlePiece.width();
@@ -175,8 +181,20 @@ function dragPuzzle() {
             && newX - 20 <= missingPiecePosX
             && newY + 20 >= missingPiecePosY
             && newY - 20 <= missingPiecePosY) {
-            // imageContainer.css({ "filter": "invert(100)" });
-            imageContainer.addClass("alive");
+
+            const img = imageContainer.children("img")[0];
+
+            img.animate(
+                [{ filter: "invert(100%)" }, { filter: "invert(60%)" }],
+                { duration: 500, fill: "forwards" }
+            ).onfinish = () => {
+                img.src = imagePositive;
+                img.animate(
+                    [{ filter: "invert(60%)" }, { filter: "invert(0%)" }],
+                    { duration: 500, fill: "forwards" }
+                );
+            };
+
             puzzlePiece.hide();
             missingPiecePlacement.hide();
         }

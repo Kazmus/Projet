@@ -161,17 +161,17 @@ header nav ul {
 }
 
 #About #Image {
-    width: 40%;
+    width: 25%;
 }
 
-.alive {
+/* .alive {
     animation: toBeAlive 2s forwards;
 }
 
 @keyframes toBeAlive {
   from { filter: invert(0)}
   to { filter: invert(100%)}
-}
+} */
 
 #About #Image .puzzlePiece {
     display: block;
@@ -195,7 +195,7 @@ header nav ul {
     width: 100px;
     height: 100px;
     z-index: 10;
-    transform: translateX(400px) translateY(350px);
+    transform: translateX(300px) translateY(300px);
     filter: grayscale(100%);
 }
 
@@ -703,6 +703,7 @@ footer .contact {
 
     #KeyStrengths .cardInfo {
         flex-direction: column;
+        text-align: center;
     }
 
     #KeyStrengths .cardPlacement {
@@ -712,6 +713,11 @@ footer .contact {
 
     #KeyStrengths p {
         width: 90%;
+    }
+
+    @keyframes bob {               
+        0%, 100% { translate: 0 0;     scale: 1;     }
+        50%      { translate: 0 -12px; scale: 1.035; }   
     }
 
     #Contact {
@@ -742,7 +748,7 @@ footer .contact {
 
 @media (max-width: 576px) {
     #Projects .atom {
-        transform: scale(0.6);
+        transform: scale(0.55);
         transform-origin: center;
     }
 }
