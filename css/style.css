@@ -8,7 +8,6 @@ html {
     box-sizing: border-box;
 }
 
-/* keep media from overflowing its container on small screens */
 img {
     max-width: 100%;
 }
@@ -164,15 +163,6 @@ header nav ul {
     width: 25%;
 }
 
-/* .alive {
-    animation: toBeAlive 2s forwards;
-}
-
-@keyframes toBeAlive {
-  from { filter: invert(0)}
-  to { filter: invert(100%)}
-} */
-
 #About #Image .puzzlePiece {
     display: block;
     position: absolute;
@@ -180,7 +170,6 @@ header nav ul {
     height: 100px;
     cursor: grab;
     z-index: 15;
-    /* transform: translateX(200px) translateY(350px); */
     filter: invert(100%);
     animation: spin 18s linear infinite;
 }
@@ -205,12 +194,8 @@ header nav ul {
 }
 
 #Projects {
-    /* width: 60%; */
-    /* margin-left: 1%; */
     margin: 0 auto;
     width: 40%;
-    /* margin-left: 20px;
-    margin-right: 20px; */
     height: 80vh;
 }
 
@@ -268,9 +253,9 @@ header nav ul {
     stroke-dashoffset: 100;
 }
 
-#Projects .atom.in-view .firstEllipse  { animation: draw 1.2s ease 0s   forwards; }
-#Projects .atom.in-view .secondEllipse { animation: draw 1.2s ease 1.2s forwards; }
-#Projects .atom.in-view .thirdEllipse  { animation: draw 1.2s ease 2.4s forwards; }
+#Projects .atom.in-view .firstEllipse  { animation: draw 1.2s ease 0s forwards; }
+#Projects .atom.in-view .secondEllipse { animation: draw 1.2s ease 0.6s forwards; }
+#Projects .atom.in-view .thirdEllipse  { animation: draw 1.2s ease 1.2s forwards; }
 
 @keyframes draw {
     to { stroke-dashoffset: 0; }
@@ -323,7 +308,6 @@ header nav ul {
 }
 
 #Projects .label-pop {
-    /* position: absolute;  */
     width: 150px;
     font-size: 1.2rem;
     height: auto;
@@ -331,7 +315,6 @@ header nav ul {
     justify-content: center;
     align-items: start;
     flex-direction: column;
-    /* background-color: grey; */
     border: 2px solid yellowgreen;
     left: 0; 
     top: 0; 
@@ -339,9 +322,12 @@ header nav ul {
     opacity: 0; 
     transform: translate(-50%, -50%) scale(0);
 }
-#Projects .atom.in-view .t1 { animation: pop .45s cubic-bezier(.34,1.56,.64,1) 1.2s forwards; }
-#Projects .atom.in-view .t2 { animation: pop .45s cubic-bezier(.34,1.56,.64,1) 2.4s forwards; }
-#Projects .atom.in-view .t3 { animation: pop .45s cubic-bezier(.34,1.56,.64,1) 3.6s forwards; }
+#Projects .atom.in-view .t1 { animation: pop .45s cubic-bezier(.34,1.56,.64,1) 0.3s forwards; }
+#Projects .atom.in-view .t2 { animation: pop .45s cubic-bezier(.34,1.56,.64,1) 0s forwards; }
+#Projects .atom.in-view .t3 { animation: pop .45s cubic-bezier(.34,1.56,.64,1) 0.9s forwards; }
+#Projects .atom.in-view .t4 { animation: pop .45s cubic-bezier(.34,1.56,.64,1) 0.6s forwards; }
+#Projects .atom.in-view .t5 { animation: pop .45s cubic-bezier(.34,1.56,.64,1) 1.5s forwards; }
+#Projects .atom.in-view .t6 { animation: pop .45s cubic-bezier(.34,1.56,.64,1) 1.2s forwards; }
 
 @keyframes pop {
     from { opacity: 0; transform: translate(-50%, -50%) scale(0); }
@@ -355,30 +341,22 @@ header nav ul {
 }
 
 #Projects .label-hidden {
-    /* position: absolute;  */
     width: 0;
     height: 25px;
     text-align: center;
     background-color: grey;
     border: 2px solid yellowgreen;
-    /* left: 0; 
-    top: 0;  */
     white-space: nowrap;
-    /* transform: translate(-50%, -50%) scale(0); */
     display: none;
 }
 
 #Projects .label-visible {
-    /* position: absolute;  */
     width: 100%;
     height: 25px;
     text-align: center;
     background-color: black;
     border: 2px solid yellowgreen;
-    /* left: 0; 
-    top: 0;  */
     white-space: nowrap;
-    /* transform: translate(-50%, -50%) scale(0); */
 }
 
 /* HARD SKILLS */
@@ -388,9 +366,6 @@ header nav ul {
 }
 
 #HardSkills h2 {
-    /* position: absolute;  */
-    /* top: 525px; */
-    /* left: 120px; */
     text-align: center;
     margin-bottom: 20px;
 }
@@ -398,7 +373,6 @@ header nav ul {
 #HardSkills .marquee {
     display: flex; 
     overflow: hidden;
-    /* position: absolute;  */
     top: 30%;
     opacity: 1; 
     height: 50px;
@@ -406,9 +380,7 @@ header nav ul {
 
 #HardSkills .track {
     display: flex; 
-    /* position: relative;  */
     background-color: black;
-    /* border: 2px solid yellowgreen; */
     list-style-type: none; 
     justify-content: flex-start; 
     flex-direction: row; 
@@ -497,11 +469,11 @@ header nav ul {
 
 #KeyStrengths .card.notMoved {
     transform-style: preserve-3d;
-    animation: bob 4s ease-in-out infinite,
+    animation: breath 4s ease-in-out infinite,
              drift 7s ease-in-out infinite;
 }
 
-@keyframes bob {               
+@keyframes breath {               
   0%, 100% { translate: 0 0;     scale: 1;     }
   50%      { translate: 0 -26px; scale: 1.035; }   
 }
@@ -528,12 +500,10 @@ header nav ul {
 #KeyStrengths .cardPlacement {
     width: 200px;
     height: 260px;
-    /* border: 2px solid greenyellow; */
 }
 
 #KeyStrengths p {
     width: 50%;
-    /* border: 2px solid greenyellow; */
 }
 
 /* CONTACT */
@@ -715,7 +685,7 @@ footer .contact {
         width: 90%;
     }
 
-    @keyframes bob {               
+    @keyframes breath {               
         0%, 100% { translate: 0 0;     scale: 1;     }
         50%      { translate: 0 -12px; scale: 1.035; }   
     }
