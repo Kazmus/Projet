@@ -141,7 +141,20 @@ const puzzlePiece = $(".puzzlePiece");
 const missingPiecePlacement = $(".missingPiecePlacement");
 const imagePositive = "/images/positif.jpg";
 
+function isMobile() {
+    return window.matchMedia("(max-width: 768px)").matches
+        || /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
+}
+
 function dragPuzzle() {
+    if (isMobile()) {
+        const img = imageContainer.children("img")[0];
+        img.src = imagePositive;
+        puzzlePiece.hide();
+        missingPiecePlacement.hide();
+        return;
+    }
+
     const width = puzzlePiece.width();
     const height = puzzlePiece.height();
 
