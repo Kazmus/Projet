@@ -37,7 +37,6 @@ p, li {
 
 a {
     text-decoration: none;
-    color: white;
 }
 
 .clickable {
@@ -69,7 +68,6 @@ a {
 /* GLOBAL */
 .primaryBackgroundColor {
     background-color: black;
-    /* background-image: url(../images/backgroundStars.avif); */
 }
 
 .primaryColor {
