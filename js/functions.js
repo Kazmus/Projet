@@ -75,10 +75,6 @@ var animating = false;
 function magicCard() {
     var prevCard = null;
 
-    $.each(cards, function (index, value) {
-        value.originPosition = $("." + value.className).parent().offset();
-    });
-
     $(".card").on("click", function () {
         var selectedCard = $(this);
 
@@ -108,13 +104,8 @@ function moveCard(selectedCard) {
     if (selectedCard.hasClass("moved")) {
         animateProps = { top: 0, left: 0 };
     } else {
-        var cardOffset = selectedCard.offset();
-        $.each(cards, function (index, value) {
-            if (selectedCard.hasClass(value.className) &&
-                selectedCard.hasClass("notMoved")) {
-                cardOffset = value.originPosition;
-            }
-        });
+        // live offset instead of a value cached at page-load time
+        var cardOffset = selectedCard.parent().offset();
         animateProps = {
             top: (targetOffset.top - cardOffset.top) + "px",
             left: (targetOffset.left - cardOffset.left) + "px"
