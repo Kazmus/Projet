@@ -199,19 +199,21 @@ function dragPuzzle() {
                 );
             };
 
-            puzzlePiece.hide();
-            missingPiecePlacement.hide();
+            puzzlePiece.remove();
+            missingPiecePlacement.remove();
         }
     });
 }
 
 function randomMovementPuzzle() {
+    if (isMobile()) return;
     const containerOffset = imageContainer.position();
 
     randomMovement(containerOffset);
 }
 
 function randomMovement(containerOffset) {
+
     const x = containerOffset.left + Math.random() * (imageContainer.width() - puzzlePiece.width());
     const y = containerOffset.top + Math.random() * (imageContainer.height() - puzzlePiece.height());
 
