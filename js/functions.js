@@ -104,7 +104,6 @@ function moveCard(selectedCard) {
     if (selectedCard.hasClass("moved")) {
         animateProps = { top: 0, left: 0 };
     } else {
-        // live offset instead of a value cached at page-load time
         var cardOffset = selectedCard.parent().offset();
         animateProps = {
             top: (targetOffset.top - cardOffset.top) + "px",
@@ -165,7 +164,6 @@ function dragPuzzle() {
         var newX = e.pageX - w / 2;
         var newY = e.pageY - h / 2;
 
-        // keep the whole piece inside the container
         newX = Math.max(off.left, Math.min(newX, off.left + cw - w));
         newY = Math.max(off.top, Math.min(newY, off.top + ch - h));
 

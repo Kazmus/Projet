@@ -356,7 +356,7 @@ header nav ul {
 /* HARD SKILLS */
 #HardSkills {
     height: 20vh;
-    transform: rotate(-3deg);
+    /* transform: rotate(-3deg); */
 }
 
 #HardSkills h2 {
@@ -497,6 +497,10 @@ header nav ul {
 
 #KeyStrengths p {
     width: 50%;
+}
+
+#KeyStrength .clickCardHint {
+    text-align: center;
 }
 
 /* CONTACT */
