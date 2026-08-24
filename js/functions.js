@@ -71,12 +71,18 @@ card5.description = "I say what I mean and deliver what I promise. No overclaimi
 const cards = new Array(card1, card2, card3, card4, card5);
 
 var animating = false;
+var firstClick = true;
 
 function magicCard() {
     var prevCard = null;
 
     $(".card").on("click", function () {
         var selectedCard = $(this);
+
+        if (firstClick) {
+            firstClick = false;
+            $(".clickCardHint").fadeOut();
+        }
 
         if (animating) return null;
 
@@ -131,6 +137,9 @@ const puzzlePiece = $(".puzzlePiece");
 const missingPiecePlacement = $(".missingPiecePlacement");
 const imagePositive = "/images/positif.jpg";
 
+const preloadedPositive = new Image();
+preloadedPositive.src = imagePositive;
+
 function isMobile() {
     return window.matchMedia("(max-width: 768px)").matches
         || /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
@@ -148,7 +157,7 @@ function dragPuzzle() {
     const width = puzzlePiece.width();
     const height = puzzlePiece.height();
 
-    const missingPiecePos = missingPiecePlacement.position();
+    const missingPiecePos = missingPiecePlacement.offset();
     const missingPiecePosX = missingPiecePos.left - width / 2;
     const missingPiecePosY = missingPiecePos.top - width / 2;
 
@@ -176,9 +185,10 @@ function dragPuzzle() {
     }).click(function (e) {
         currentMousePos.x = e.pageX;
         currentMousePos.y = e.pageY;
-        console.log(currentMousePos, missingPiecePosX, missingPiecePosY);
+
         const newX = currentMousePos.x - width;
         const newY = currentMousePos.y - height;
+
         if (newX + 20 >= missingPiecePosX
             && newX - 20 <= missingPiecePosX
             && newY + 20 >= missingPiecePosY

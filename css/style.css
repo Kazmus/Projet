@@ -45,11 +45,11 @@ a {
 
 @media (max-width: 768px) {
     h1 {
-        font-size: 2rem;
+        font-size: 2.5rem;
     }
 
     h2 {
-        font-size: 1.5rem;
+        font-size: 2rem;
     }
 
     h3 {
@@ -178,7 +178,9 @@ header nav ul {
     width: 100px;
     height: 100px;
     z-index: 10;
-    transform: translateX(300px) translateY(300px);
+    top: 70%;  
+    left: 84%;
+    transform: translate(-50%, -50%);
     filter: grayscale(100%);
 }
 
@@ -495,12 +497,20 @@ header nav ul {
     height: 260px;
 }
 
-#KeyStrengths p {
+#KeyStrengths .cardDescription {
     width: 50%;
 }
 
-#KeyStrength .clickCardHint {
-    text-align: center;
+#KeyStrengths .mainContainer{
+    display: flex;
+    justify-content: center;
+}
+
+#KeyStrengths .mainContainer .clickCardHint{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
 }
 
 /* CONTACT */
@@ -546,6 +556,8 @@ footer .contact {
     header {
         height: auto;
         padding: 15px 0;
+        margin-left: 5px;
+        margin-right: 5px;
     }
  
     header nav {
@@ -594,12 +606,15 @@ footer .contact {
     header nav.nav-open .hamburger span:nth-child(3) {
         transform: translateY(-10px) rotate(-45deg);
     }
+    
 
     #AboutContainer {
         flex-direction: column;
         height: auto;
         gap: 40px;
         padding: 40px 0;
+        margin-left: 5px;
+        margin-right: 5px;
     }
 
     #About #Description {
@@ -628,12 +643,14 @@ footer .contact {
     #Projects {
         width: 90%;
         height: 60vh;
+        
     }
 
     #KeyStrengths {
         height: auto;
         margin-top: 30px;
         padding-bottom: 40px;
+        
     }
 
     #KeyStrengths .cardsContainer {
@@ -680,7 +697,7 @@ footer .contact {
         height: 100px;
     }
 
-    #KeyStrengths p {
+    #KeyStrengths .cardDescription {
         width: 90%;
     }
 
@@ -699,6 +716,13 @@ footer .contact {
         height: auto;
         gap: 12px;
         padding: 20px 0;
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+
+    #Contact {
+        margin-left: 5px;
+        margin-right: 5px;
     }
 
     footer div,
