@@ -2,7 +2,7 @@
 
 A single-page, animation-heavy portfolio site showcasing my skills, projects, and background as a full-stack developer.
 
-**Live site:** *(https://mauriziodev.be/)*
+**Live site: https://mauriziodev.be/
 **Stack:** HTML5, CSS3, vanilla JS + jQuery — no build step, no framework
 
 ## Features
