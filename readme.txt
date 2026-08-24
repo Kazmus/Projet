@@ -57,22 +57,13 @@ Projet/
 
 No build step or dependencies required — it's static HTML/CSS/JS.
 
-```bash
-# from the project root
-python -m http.server 8000
-```
-Then open `http://localhost:8000`.
-
-Or simply open `index.html` directly in a browser (note: a local server is recommended so relative asset paths and any future fetch/AJAX calls behave the same as in production).
-
 ## Deployment
 
 This is a static site — host it anywhere that serves static files (GitHub Pages, Netlify, Vercel, or your own web server). No server-side processing is required for the portfolio itself.
 
 ## Notes
 
-- The **Projects** section links to `/projects/kanban/index.php`, which points to a path on the deployed server rather than a relative path — update this if the portfolio is hosted at a different location or domain than the Kanban project.
-- Several "Coming soon" project slots (Mobile Games, 3D Games, AI, Blender) are placeholders for future work.
+- Several "Coming soon" project slots are placeholders for future work.
 - Contact links (LinkedIn, email) are in the footer.
 
 ## Credits
