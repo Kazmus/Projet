@@ -71,7 +71,8 @@ card5.description = "I say what I mean and deliver what I promise. No overclaimi
 const cards = new Array(card1, card2, card3, card4, card5);
 
 var animating = false;
-var firstClick = true;
+var firstClickCard = true;
+var firstClickProject = true;
 
 function magicCard() {
     var prevCard = null;
@@ -79,8 +80,8 @@ function magicCard() {
     $(".card").on("click", function () {
         var selectedCard = $(this);
 
-        if (firstClick) {
-            firstClick = false;
+        if (firstClickCard) {
+            firstClickCard = false;
             $(".clickCardHint").fadeOut();
         }
 
@@ -260,6 +261,10 @@ function atomProjectCases() {
     const currentClickableCase = $(".label-pop");
 
     currentClickableCase.click(function () {
+        if (firstClickProject) {
+            firstClickProject = false;
+            $(".clickProjectHint").fadeOut();
+        }
         // over
         $(this).children(".label-hidden").show();
         $(this).children(".label-hidden").animate({

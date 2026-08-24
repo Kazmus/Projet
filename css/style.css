@@ -355,6 +355,18 @@ header nav ul {
     white-space: nowrap;
 }
 
+#Projects .mainContainer{
+    display: flex;
+    justify-content: center;
+}
+
+#Projects .mainContainer .clickProjectHint{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+}
+
 /* HARD SKILLS */
 #HardSkills {
     height: 20vh;
