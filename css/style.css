@@ -757,3 +757,103 @@ footer .contact {
         transform-origin: center;
     }
 }
+
+/* Admin */
+#Admin #About {
+    min-height: 130vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#Admin #About form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 50%;
+    margin-top: 50px;
+}
+
+#Admin #About input[type=text] {
+    height: 30px;
+    font-size: large;
+    padding: 10px;
+    width: 100%;
+}
+
+#Admin #About button {
+    height: 40px;
+    padding: 10px;
+    width: 120px;
+}
+
+#Admin #About textarea {
+    min-height: 200px;
+    font-size: large;
+    padding: 10px;
+    width: 100%;
+}
+
+#Admin #About .imageUpload {
+    display: flex;
+    flex-direction: column;
+    font-size: large;
+    justify-content: center;
+    align-items: center;
+}
+
+#Admin #About .imageUpload input {
+    border: solid greenyellow 1px;
+}
+
+#Admin #About .imageUploadsContainer {
+    display: flex;
+    gap: 20px;
+}
+
+#Admin #About #AboutImagePositif, #AboutImageNégatif {
+    height: 625px;
+    width: 465px;
+}
+
+#Admin #HardSkills {
+    min-height: 50vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#Admin #HardSkills p {
+    margin-bottom: 50px;
+}
+
+#Admin #HardSkills form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 50%;
+    margin-top: 50px;
+}
+
+#Admin #HardSkills input[type=text] {
+    height: 30px;
+    font-size: large;
+    padding: 10px;
+    width: 25%;
+}
+
+#Admin #Projects {
+    min-height: 80vh;
+}
+
+#Admin #Projects .projectsContainer {
+    border: solid greenyellow 1px;
+    width: 100%;
+    height: 40vh;
+}
+
+#Admin #KeyStrengths {
+    height: 40vh;
+}

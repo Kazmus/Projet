@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body id="Admin" class="primaryBackgroundColor primaryFont">
+    <header>
+        <nav>
+            <div class="logo">
+                <h1 class="secondaryColor title">Content page</h1>
+            </div>
+            <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul>
+                <li><a class="primaryColor" href="#About">About me</a></li>
+                <li><a class="primaryColor" href="#HardSkills">Hard skills</a></li>
+                <li><a class="primaryColor" href="#Projects">Projects</a></li>
+                <li><a class="primaryColor" href="#KeyStrengths">Key strengths</a></li>
+                <li><a class="primaryColor" href="#Footer">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section id="About">
+        <h2 class="secondaryColor">About me</h2>
+        <form action="admin.html" method="post">
+            <label class="primaryColor" for="title">Titre</label>
+            <input type="text" id="Title" name="title">
+            <label class="primaryColor" for="description">Description</label>
+            <textarea maxlength="1000" type="text" name="description"> </textarea>
+            <div class="imageUploadsContainer">
+                <div class="imageUpload">
+                    <label class="primaryColor" for="AboutImageNégatif">Image négative</label>
+                    <input
+                        type="image"
+                        id="AboutImageNégatif"
+                        alt="Profil"
+                        src="" />
+                </div>
+                <div class="imageUpload">        
+                    <label class="primaryColor" for="AboutImagePositif">Image positive</label>
+                    <input
+                        type="image"
+                        id="AboutImagePositif"
+                        alt="Profil"
+                        src="" />
+                </div>
+            </div>
+            <button type="submit">Save changes</button>
+        </form>
+    </section>
+    <section id="HardSkills">
+        <h2 class="secondaryColor">HardSkills</h2>
+        <h3 class="primaryColor">List of hard skills</h3>
+        <p class="secondaryColor">js - html - css</p>
+        <h3 class="primaryColor">Add new hard skills</h3>
+        <form action="admin.html" method="post">
+            <label class="primaryColor" for="hardSkill">Add skill</label>
+            <input type="text" name="hardSkill">
+        </form>
+    </section>
+    <section id="Projects">
+        <h2 class="secondaryColor">Projects</h2>
+        <div class="projectsContainer">
+        
+        </div>
+    </section>
+    <section id="KeyStrengths">
+        <h2 class="secondaryColor">KeyStrengths</h2>
+    </section>
+    <section id="Contact">
+        <h2 class="secondaryColor">Contact</h2>
+    </section>
+    <footer id="Footer">
+        <div class="copyright">
+            <p class="primaryColor">Designed by Maurizio Girlando</p>
+            <p class="primaryColor">2026</p>
+        </div>
+        <div class="backToTop">
+            <p><a class="secondaryColor" href="#Header">↑ Back to top ↑</a></p>
+            <p><a class="primaryColor" href="https://github.com/Kazmus/Portfolio">Portfolio GitHub</a></p>
+        </div>
+        <div class="contact">
+            <p><a class="primaryColor" href="https://be.linkedin.com/in/maurizio-girlando-63627b183">Linkedin</a></p>
+            <p><a class="primaryColor" href="mailto:maurizio.girlando@gmail.com" >E-Mail</a></p>
+        </div>
+    </footer>
+</body>
+</html>
